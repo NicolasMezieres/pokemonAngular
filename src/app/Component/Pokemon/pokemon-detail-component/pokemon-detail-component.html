@@ -1,0 +1,23 @@
+<!-- <p (click)="log()">pokemon-detail-component works!</p> -->
+<main>
+  @if (pokemonDetail$ | async; as pokemon) {
+  <p>id: {{pokemon.id}}</p>
+  <p>nom: {{pokemon.forms[0].name}}</p>
+  <img src="{{pokemon.sprites.front_default}}" />
+  <p>Taille : {{pokemon.weight}}</p>
+  <p>Statistique :</p>
+  <ul>
+    @for(stat of pokemon.stats; track $index ){
+    <li>{{stat.stat.name}} : {{stat.base_stat}}</li>
+    }
+  </ul>
+  <p>Pouvoir :</p>
+  <ul>
+    @for (ability of pokemon.abilities; track $index) {
+    <li>{{ability.ability.name}}</li>
+    }
+  </ul>
+  }@else {
+  <p>Aucun pokemon trouvé</p>
+  }
+</main>

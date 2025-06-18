@@ -1,0 +1,7 @@
+<ul>
+  @for (pokemon of (pokemonList$ | async)?.results; track $index) {
+  <li><a [routerLink]="['/pokemon',$index + 1]">{{pokemon.name}}</a></li>
+  } @empty {
+  <li>Il y à pas de pokemon</li>
+  }
+</ul>
