@@ -1,16 +1,23 @@
-<main class="flex items-center flex-col gap-2 mt-5">
-  <h1 class="text-5xl mb-5">Liste des 50 premiers pokemon :</h1>
+<main class="flex items-center flex-col gap-2 mt-5 text-center">
+  <h1 class="text-4xl mb-5">Liste des 50 premiers pokemon :</h1>
 
-  <label>Rechercher un pokemon :</label>
+  <label for="search">Rechercher un pokemon :</label>
   <input
+    id="search"
     type="text"
     placeholder="rechercher..."
     class="border border-black text-center"
+    (blur)="searchPokemon($event)"
   />
+  <button (click)="updateFilter()" type="button">
+    {{isFiltered ? 'Filtred' : 'Not Filtered'}}
+  </button>
 
-  <ul class="mt-5">
-    @for (pokemon of (pokemonList$ | async)?.results; track $index) {
-    <li><a [routerLink]="['/pokemon',$index + 1]">{{pokemon.name}}</a></li>
+  <ul class="mt-5 flex flex-col gap-2 md:grid md:grid-cols-4 md:gap-4">
+    @for (pokemon of resultSearchPokemon; track $index) {
+    <li class="border border-black rounded-[8px] hover:bg-amber-100 px-2">
+      <a [routerLink]="['/pokemon',$index + 1]">{{pokemon.name}}</a>
+    </li>
     } @empty {
     <li>Il y à pas de pokemon</li>
     }
