@@ -9,17 +9,17 @@
     class="border border-black text-center"
     (blur)="searchPokemon($event)"
   />
-  <button (click)="updateFilter()" type="button">
+  <button (click)="updateFilter()" type="button" class="">
     {{isFiltered ? 'Filtred' : 'Not Filtered'}}
   </button>
 
   <ul class="mt-5 flex flex-col gap-2 md:grid md:grid-cols-4 md:gap-4">
     @for (pokemon of resultSearchPokemon; track $index) {
     <li class="border border-black rounded-[8px] hover:bg-amber-100 px-2">
-      <a [routerLink]="['/pokemon',$index + 1]">{{pokemon.name}}</a>
+      <a [routerLink]="['/pokemon',pokemon.name]">{{pokemon.name}}</a>
     </li>
     } @empty {
     <li>Il y à pas de pokemon</li>
-  }
+    }
   </ul>
 </main>

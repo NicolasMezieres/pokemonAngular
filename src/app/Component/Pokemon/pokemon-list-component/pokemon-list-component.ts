@@ -3,6 +3,7 @@ import { PokemonService } from '../../../Service/Pokemon/pokemon-service';
 import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { pokemon, pokemonList } from '../../../Utils/type';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-list-component',
@@ -24,7 +25,7 @@ export class PokemonListComponent {
   updateFilter() {
     this.isFiltered = !this.isFiltered;
     if (this.isFiltered) {
-      this.resultSearchPokemon = this.resultSearchPokemon.sort((a, b) => {
+      this.resultSearchPokemon = this.pokemons.sort((a, b) => {
         return a.name.localeCompare(b.name);
       });
     } else {
