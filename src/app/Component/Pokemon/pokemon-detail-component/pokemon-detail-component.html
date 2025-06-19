@@ -1,23 +1,43 @@
 <!-- <p (click)="log()">pokemon-detail-component works!</p> -->
-<main>
+<main class="max-w-md mx-auto p-4 bg-white rounded-lg shadow-md mt-5">
   @if (pokemonDetail$ | async; as pokemon) {
-  <p>id: {{pokemon.id}}</p>
-  <p>nom: {{pokemon.forms[0].name}}</p>
-  <img src="{{pokemon.sprites.front_default}}" />
-  <p>Taille : {{pokemon.weight}}</p>
-  <p>Statistique :</p>
-  <ul>
+  
+  <p class="text-gray-600 text-sm">Id: {{pokemon.id}}</p>
+  
+  <h1 class="text-2xl font-bold mb-4 text-center capitalize">nom: {{pokemon.forms[0].name}}</h1>
+ 
+  <div class="text-center mb-4">
+  <img src="{{pokemon.sprites.front_default}}" class="mx-auto w-32 h-32" />
+  </div>
+
+  <p class="text-lg mb-4">
+   <span class="font-bold">Taille :</span> {{pokemon.weight}} kg
+  </p>
+  
+  <div class="mb-4">
+  <h2 class="text-lg font-semibold mb-2">Statistique :</h2>
+  <ul class="space-y-1">
     @for(stat of pokemon.stats; track $index ){
-    <li>{{stat.stat.name}} : {{stat.base_stat}}</li>
+    <li class="bg-gray-200 p-2 rounded">
+      <span class="capitalize">{{stat.stat.name}} </span>
+      <span class="font-bold">{{stat.base_stat}}</span> 
+      </li>
     }
   </ul>
-  <p>Pouvoir :</p>
-  <ul>
+  </div>
+
+
+  <div>
+  <h2 class="text-lg font-semibold mb-2">Pouvoir :</h2>
+  <ul class="space-y-1">
     @for (ability of pokemon.abilities; track $index) {
-    <li>{{ability.ability.name}}</li>
+    <li class="bg-gray-200 text-gray-800 font-bold p-2 rounded capitalize">
+      {{ability.ability.name}}
+    </li>
     }
   </ul>
+  </div>
   }@else {
-  <p>Aucun pokemon trouvé</p>
+  <p class="text-grey-500 text-center">Aucun pokemon trouvé</p>
   }
 </main>

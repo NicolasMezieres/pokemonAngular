@@ -18,6 +18,7 @@ export type PokemonDetail = {
 export type pokemonList = {
   results: { name: string; url: string }[];
 };
+
 export type pokemon = {
   name: string;
   url: string;
