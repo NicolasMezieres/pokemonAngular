@@ -1,7 +1,18 @@
-<ul>
-  @for (pokemon of (pokemonList$ | async)?.results; track $index) {
-  <li><a [routerLink]="['/pokemon',$index + 1]">{{pokemon.name}}</a></li>
-  } @empty {
-  <li>Il y à pas de pokemon</li>
-  }
-</ul>
+<main class="flex items-center flex-col gap-2 mt-5">
+  <h1 class="text-5xl mb-5">Liste des 50 premiers pokemon :</h1>
+
+  <label>Rechercher un pokemon :</label>
+  <input
+    type="text"
+    placeholder="rechercher..."
+    class="border border-black text-center"
+  />
+
+  <ul class="mt-5">
+    @for (pokemon of (pokemonList$ | async)?.results; track $index) {
+    <li><a [routerLink]="['/pokemon',$index + 1]">{{pokemon.name}}</a></li>
+    } @empty {
+    <li>Il y à pas de pokemon</li>
+    }
+  </ul>
+</main>

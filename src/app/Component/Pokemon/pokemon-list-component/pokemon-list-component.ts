@@ -12,4 +12,5 @@ import { RouterLink } from '@angular/router';
 export class PokemonListComponent {
   public pokemonService = inject(PokemonService);
   pokemonList$ = this.pokemonService.getPokemons();
+  search: string = '';
 }
